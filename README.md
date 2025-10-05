@@ -132,8 +132,8 @@ back/
 - `POST /api/voluntarios/registrar` - Registrar nuevo voluntario
 
 ### Listado de Usuarios
-- `GET /api/listado_usuarios` - Obtener listado completo de usuarios (sugerencia si lo necesitas me pides @Fernan || @Alvis)
-- `GET /api/listado_usuarios/:perfil` - Obtener usuarios por perfil (sugerencias si lo necesitas me pides @Fernan || @Alvis)
+- `GET /api/listado_usuarios` - Obtener listado completo de usuarios (esto solo es una sugerencia, si lo necesitas me pides @Fernan || @Alvis)
+- `GET /api/listado_usuarios/:perfil` - Obtener usuarios por perfil (esto solo es una sugerencia, si lo necesitas me pides @Fernan || @Alvis)
 
 ## 🛠️ Tecnologías Utilizadas
 
