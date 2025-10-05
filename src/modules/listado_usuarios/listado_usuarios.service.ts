@@ -37,4 +37,45 @@ export class ListadosService {
         const result = await query(sql, []);
         return result.rows;
     }
+
+    async listarTodosLosUsuarios(): Promise<any[]> {
+        const sql = `
+            SELECT
+                u.id_usuario,
+                u.usuario,
+                u.nombre,
+                u.apellido,
+                u.fecha_creacion,
+                u.estado,
+                pf.id_perfil,
+                pf.descripcion AS perfil,
+                (SELECT MAX(ha.fecha) FROM historial_acceso ha WHERE ha.id_usuario = u.id_usuario) AS fecha_ultimo_acceso
+            FROM usuarios u
+            INNER JOIN perfil pf ON u.id_perfil = pf.id_perfil
+            ORDER BY u.id_usuario DESC;
+        `;
+        const result = await query(sql, []);
+        return result.rows;
+    }
+
+    async listarUsuariosPorPerfil(idPerfil: number): Promise<any[]> {
+        const sql = `
+            SELECT
+                u.id_usuario,
+                u.usuario,
+                u.nombre,
+                u.apellido,
+                u.fecha_creacion,
+                u.estado,
+                pf.id_perfil,
+                pf.descripcion AS perfil,
+                (SELECT MAX(ha.fecha) FROM historial_acceso ha WHERE ha.id_usuario = u.id_usuario) AS fecha_ultimo_acceso
+            FROM usuarios u
+            INNER JOIN perfil pf ON u.id_perfil = pf.id_perfil
+            WHERE u.id_perfil = $1
+            ORDER BY u.id_usuario DESC;
+        `;
+        const result = await query(sql, [idPerfil]);
+        return result.rows;
+    }
 }

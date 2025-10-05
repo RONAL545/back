@@ -7,5 +7,7 @@ const listadosController = new ListadosController();
 
 router.get('/personal', listadosController.getPersonal);
 router.get('/voluntarios', listadosController.getVoluntarios);
+router.get('/:perfil', listadosController.getUsuariosPorPerfil);
+router.get('/', listadosController.getTodosLosUsuarios);
 
 export default router;
